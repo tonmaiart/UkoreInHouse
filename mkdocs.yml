@@ -1,0 +1,34 @@
+site_name: UkoreInHouse
+site_url: https://tonmaiart.github.io/UkoreInHouse/
+repo_url: https://github.com/tonmaiart/UkoreInHouse
+repo_name: tonmaiart/UkoreInHouse
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: true
