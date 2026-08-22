@@ -25,6 +25,13 @@ theme:
 
 nav:
   - Home: index.md
+  - Introduction: intro.md
+  - Ukore Hub:
+      - Quick Start: ukore-hub/quick-start.md
+      - Core Feature: ukore-hub/core-feature.md
+      - External Feature: ukore-hub/external-feature.md
+  - Merdera Project:
+      - Pipeline: merdera-project/pipeline.md
 
 markdown_extensions:
   - admonition
