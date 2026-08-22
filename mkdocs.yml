@@ -4,34 +4,27 @@ repo_url: https://github.com/tonmaiart/UkoreInHouse
 repo_name: tonmaiart/UkoreInHouse
 
 theme:
-  name: material
+  name: readthedocs
   language: en
-  palette:
-    - scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.copy
+  highlightjs: true
 
 nav:
-  - Home: index.md
   - Introduction: intro.md
-  - Ukore Hub:
-      - Quick Start: ukore-hub/quick-start.md
-      - Core Feature: ukore-hub/core-feature.md
-      - External Feature: ukore-hub/external-feature.md
-  - Merdera Project:
-      - Pipeline: merdera-project/pipeline.md
+  - Pipeline Tools:
+      - Ukore Hub:
+          - Quick Start: ukore-hub/quick-start.md
+          - Project Editor : ukore-hub/project-editor.md
+          - Explorer : ukore-hub/explorer.md
+          - Submit : ukore-hub/submit.md
+          - Program Launcher : ukore-hub/program-launcher.md
+      - Ukore Shot:
+          - Quick Start: ukore-shot/quick-start.md
+          - Comment Editor: ukore-shot/comment-editor.md
+
+  - Projects:
+      - Merdera Project:
+        - Quick Start: merdera-project/quick_start.md
+        - Pipeline: merdera-project/pipeline.md
 
 markdown_extensions:
   - admonition
