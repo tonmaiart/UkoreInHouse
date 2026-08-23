@@ -63,6 +63,18 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Quick Start</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#_1">ส่วนประกอบต่างของโปรแกรม</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-playblast-history">1. Playblast History</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-share-code">2. Share Code</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-playblast-viewer">3. Playblast Viewer</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#playblast-maya">การ Playblast ฝั่ง Maya</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../comment-editor/">Comment Editor</a>
@@ -108,20 +120,34 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="ukore-shot">Ukore Shot<a class="headerlink" href="#ukore-shot" title="Permanent link">&para;</a></h1>
+<p><img alt="Ukore Shot" src="../../assets/images/ukhub_ukshot.png" /></p>
+<p>Ukore Shot เป็น Plug-in เสริมของ Ukore Hub ซึ่งจะปรากฎให้ใช้งานในบาง Repo เช่นแผนก Animator</p>
+<p>โดย Ukore Shot เป็น Plug-in ที่ช่วยให้ Animator สามารถกด Playblast จาก Maya และสามารถเปิดดู , วาดเส้น Comment แต่ละ Keyframe และสามารถแชร์ให้คนอื่นๆในแผนกได้อย่างง่ายดาย</p>
+<hr />
+<h2 id="_1">ส่วนประกอบต่างของโปรแกรม<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><img alt="Ukore Shot" src="../../assets/images/ukhub_ukshot_info.png" /></p>
-<p><img alt="Ukore Shot Playblast in Maya" src="../../assets/images/ukhub_ukshot_maya_playblast.png" /></p>
+<h3 id="1-playblast-history">1. Playblast History<a class="headerlink" href="#1-playblast-history" title="Permanent link">&para;</a></h3>
+<p>แสดงรายการ Playblast ทั้งหมด โดย Playblast จะแบ่งเป็นสองแบบคือ Playblast จากเครื่องของเรา (เราเห็นและแก้ไขคอมเมนต์ได้เพ่ยงคนเดียว)
+และ Playblast ที่เปิดแชร์ (คนอื่นสามารถเห็นและแก้ไข Comment ได้)</p>
+<p>ช่องค้นหา : สามารถใช้ค้นหาชื่อ Shot หรือกรอก Share Code ของคนอื่นแล้วกด Enter เพื่อโหลดรายการ Playblast ของคนอื่นขึ้นมาได้
+ปุ่มลบวิดีโอด้านล่าง : เลือกรายการ Playblast แล้วกดลบได้ </p>
+<p><strong>หมายเหตุ:</strong> สามารถแยกแยะ Playblast ที่แชร์กับ Playblast บนเครื่องด้วยการ สังเกตุที่ icon share สีฟ้าในรายการ</p>
+<h3 id="2-share-code">2. Share Code<a class="headerlink" href="#2-share-code" title="Permanent link">&para;</a></h3>
+<p>จะเป็นพื้นที่แสดงรหัส Share Code โดยเราสามารถ Copy Code แล้วส่งต่อให้คนอื่นได้ </p>
+<p><strong>หมายเหตุ :</strong> ต้องกดเปิดแชร์ก่อนในครั้งแรก หากวิดีโอนั้นไม่เคยเปิดแชร์มาก่อน</p>
+<h3 id="3-playblast-viewer">3. Playblast Viewer<a class="headerlink" href="#3-playblast-viewer" title="Permanent link">&para;</a></h3>
+<p>เราสามารถเล่นวิดีโอ Preview ทางขวามือได้ โดยสามารถกดปุ่ม shortcut ได้ดังนี้</p>
+<p><strong>- Spacebar</strong> - เล่น/หยุด</p>
+<p><strong>- A, D</strong> - เลื่อนเฟรมไปทางซ้ายขวา</p>
+<p><strong>- Shift A, Shift D</strong> - ไปย้งเฟรม comment ก่อนหลัง</p>
 <p>Ukore Shot จะทำงานควบคู่กับ Ukore Shot Playblast ของ Maya</p>
 <p>ใน Maya แถบ Ukore Tools จะมีปุ่ม Ukore Shot Playblast เมื่อกด Maya จะ playblast กล้องปัจุบัน โดยเราสามารถเช็คประวัติการ playblast ทั้งหมดได้ที่ Tab Ukore Shot ใน Ukore Hub นั่น้อง</p>
-<p>ฝั่งซ้ายมิอจะแสดงรายการ Playblast ทั้งหมด โดย Playblast จะแบ่งเป็นสองแบบคือ Playblast จากเครื่องของเรา (เราเห็นและแก้ไขคอมเมนต์ได้เพ่ยงคนเดียว)
-และ Playblast ที่เปิดแชร์ (คนอื่นสามารถเห็นและแก้ไข Comment ได้) 
-โดยสามารถสังเกตุที่ icon share ท่านชื่อ</p>
-<p>โดยคุณสามารถดูวิธีการแชร์วิดีโอได้ที่</p>
-<p>เราวามารถเล่นวิดีโอ Previee ทางขวามือได้ โดยสามารถกดปุ่ใม shortcut ได้ดังนี้
-Spacebar-เล่น/หยุด
-A,D - เลื่อนเฟรมไปทางซ้ายขวา
-Shift A,Shift D - ไปย้งเฟรม comment ก่อนหลัง</p>
 <p>โดยเราสามารถคอมเมนต์วิดีโอได้ด้วยการกด comment สามารถอ่ายต่อได้ที่ การ Comment Editor</p>
-<p>คุณยังสามารถลบรายการได้ทางซ้ายมือ</p>
+<hr />
+<h3 id="playblast-maya">การ Playblast ฝั่ง Maya<a class="headerlink" href="#playblast-maya" title="Permanent link">&para;</a></h3>
+<p><img alt="Ukore Shot Playblast in Maya" src="../../assets/images/ukhub_ukshot_maya_playblast.png" /></p>
+<p>วิธีการ Playblast ใน maya เพื่อส่งไป Ukore Shot Tab
+ต้องกดผ่าน <strong>Ukore Tools &gt; Ukore Shot Playblast</strong></p>
               
             </div>
           </div><footer>

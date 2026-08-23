@@ -54,6 +54,12 @@
                 <li class="toctree-l2"><a class="reference internal" href="../explorer/">Explorer</a>
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Submit</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#1commit-history">1.Commit History</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2submit-new-commit">2.Submit New Commit</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../program-launcher/">Program Launcher</a>
                 </li>
@@ -105,18 +111,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><img alt="Explorer" src="../../assets/images/ukhub_submit_info.png" /></p>
-<p>Commit History
-แสดงรายการ Commit ของทุกคน โดยจะแบ่งออกเป็นรายการของเครื่องเรา local commit</p>
-<p>หากมีการ commit จากผู้ใช้งานคนอื่น จะมีรายการปรากฎเพิ่มขึ้นมาใน Recent Commit</p>
-<p>หมายเหตุ : ระบบจะไม่ทำการ Sync ให้ทันที ดังนั้นผู้ใช้ต้องกดปุ่ม Sync new commit เพื่อดึงข้อมูลการเปลี่ยนแปลงล่าสุดมาที่เครื่องของเรา</p>
-<p>Submit New Commit
-รายการด้านบนจะแสดงไฟล์ต่างๆ ที่เราไปเพิ่ม ลบ หรือแก้ไขไว้ 
-รายการด้านล่างจะแสดงไฟล์ที่เราเอาใส่ตระกร้า เพื่อที่จะ Submit ไฟล์นั้นให้เป็น Commit ใหม่ ให้คนอื่นต่อไป
-หมายเหตุ :
-กดปุ่มเลือกรายการแล้วกด Stage,Unstage เพื่อเลือกว่าจะเอาไฟล์ไหนขึ้น commit
-สามารถเลือกไฟล์แล้วกด Revert ได้หากต้องการคืนค่าไฟล์นั้น หากไม่ได้ตั้งใจแก้ไข (หากกด revert file นั้นแล้วจะไม่สามารถกูคืนได้อีก)
-- การกด submit จะทำการ sync และส่งงานอัติโนมัติ</p>
+                <h1 id="submit"><strong>Submit</strong><a class="headerlink" href="#submit" title="Permanent link">&para;</a></h1>
+<p><img alt="Explorer" src="../../assets/images/ukhub_submit_info.png" /></p>
+<p>เป็น Tab ที่ใช้จัดการการ Sync ไฟล์งาน และส่งงาน โดยจะมีส่วนประกอบต่างๆดังนี้</p>
+<h3 id="1commit-history">1.Commit History<a class="headerlink" href="#1commit-history" title="Permanent link">&para;</a></h3>
+<p>เป็นส่วนที่แสดงรายการ Commit ของทุกคน โดยจะแบ่งออกเป็นสองรายการได้แก่</p>
+<ol>
+<li>
+<p>Recent Commit (Not Sync) : Commit อันใหม่จากเพื่อนร่วมงานที่ยังไม่ถูก Sync บนเครื่องเรา</p>
+</li>
+<li>
+<p>Local Commit : ประวัติการ Commit ที่อยู่บนเครื่องเรา</p>
+</li>
+</ol>
+<p><strong>หมายเหตุ :</strong> หากมี Recent Commit อัพเดทเข้ามาใหม่ ผู้ใช้ต้องกดปุ่ม Sync New commit เพื่อดึงข้อมูลการเปลี่ยนแปลงจาก Recent Commit มายัง Local Commit เพื่อให้ข้อมูลในเครื่องเราเป็นข้อมูลล่าสุดเสมอ</p>
+<h3 id="2submit-new-commit">2.Submit New Commit<a class="headerlink" href="#2submit-new-commit" title="Permanent link">&para;</a></h3>
+<p>เป็นส่วนที่เอาไว้ใช้ส่งงาน หรือสร้าง Commit ใหม่โดยจะประกอบไปด้วย</p>
+<ol>
+<li>รายการด้านบนจะแสดงไฟล์ต่างๆ ที่เราไปเพิ่ม ลบ หรือแก้ไขไว้ </li>
+<li>รายการด้านล่างจะแสดงไฟล์ที่เราเอาใส่ตระกร้า เพื่อที่จะ Submit ไฟล์นั้นให้เป็น Commit ใหม่ ให้คนอื่นต่อไป</li>
+</ol>
+<p>โดยเราสามารถเลือกรายการแล้วกดปุ่ม Unstage, Stage เพื่อย้ายรายการที่เลือก จากล่างขึ้นบน หรือบนลงล่างได้ตามใจชอบ
+จากนั้นให้กด Submit โปรแกรมจะขึ้นให้กรอก Commit Message ให้ระบุข้อความประกอบการส่งงานแล้วกด Submit ได้เลย</p>
+<p><strong>หมายเหตุ :</strong></p>
+<ol>
+<li>
+<p>หากต้องการคืนค่าไฟล์ให้กลับมาเป็นค่าเดิมทุกประการ เหมือนไม่เคยแก้ไขมาก่อน ให้เลือกรายการในรายการด้านบนแล้วกดปุ่ม Revert (โปรดตรวจสอบให้มั่นใจก่อนกดว่าไฟล์นั้นจะไม่กระทบไฟล์งานของเราจริงๆ)</p>
+</li>
+<li>
+<p>การกด submit จะทำการ sync และส่งงานอัตโนมัติ ดังนั้นผู้ใช้ไม่จำเป็นต้องกด Sync อีกรอบหลังส่งงาน</p>
+</li>
+</ol>
+<h1 id="_1">ข้อควรระวัง<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ol>
+<li>ห้ามแก้ไขงานไฟล์เดียวกัน ควรตกลงกับเพื่อนร่วมทีมให้เรียบร้อยว่าใครจะทำงานไฟล์ไหน</li>
+<li>จากข้อแรก หากต้องส่งต่องานร่วมกัน หรือป้องกันการ Conflict ( การที่ไฟล์นั้นมีคนส่งงานชนกัน ) ให้แก้ด้วยการหมั่น Commit</li>
+<li>งานทุกครั้งหลังแก้ไขงานทันทีเพื่ออัพเดทให้ไฟล์เราเป็นไฟล์ล่าสุดเสมอก่อนมีใครจะหยิบไฟล์เราไปแก้ไขต่อ</li>
+</ol>
               
             </div>
           </div><footer>
