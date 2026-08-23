@@ -1,7 +1,3 @@
-<br>
----
-<br>
-
 # Program Launcher
 ![Explorer](../assets/images/ukhub_program_launcher.png)
 

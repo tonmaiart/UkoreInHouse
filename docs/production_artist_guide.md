@@ -1,4 +1,9 @@
-**สำหรับ Post Production Artist ตอนนี้เราจะทำงานหลักๆ ผ่านโปรแกรม UkoreHub เป็นหลักซึ่งสามารถดูวิธีการใช้งานได้ที่**
-- [Quick Start to Ukore Hub](ukore-hub/quick-start.md)
+# Production Artist
+
+Production Artist จะเป็นฝ่ายที่ผลิตชิ้นงาน จาก Source ที่มีมาให้จาก Pre Production เช่น Storyboard โดยจะใช้โปรแกรม DCC ต่างๆ เช่น Maya,Substance Painter, Blender หรือโปรแกรมใดๆก็ตาม
+
+ซึ่งด้วยความที่ Production Artist ต้องคลุกคลีกับโปรแกรมมากเป็นพิเศษ ทาง Ukore Studio จึงมีนโยบายให้ Production Artist ทุกคนต้องทำงานผ่านโปรแกรม UkoreHub เป็นหลัก เพื่อให้สภาพแวดล้อมการใช้งานโปรแกรมต่างๆ เป็นไปในมาตรฐานเดียวกัน ซึ่งสามารถโหลดและศึกษาการใช้งานโปรแกรมได้ที่ลิงค์ด้านล่างนี้เลย
+
+### [Quick Start to Ukore Hub](ukore-hub/quick-start.md)
 
 **ส่วนการประสานงาน คุยงาน ก็คุยผ่านช่องทาง Discord ของโปรเจคนั้นๆได้เลยครับ**
