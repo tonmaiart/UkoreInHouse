@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # git release [commit message]
-# Stages all changes, commits, pushes to the current branch, and watches
-# the GitHub Actions workflow build + deploy the MkDocs site to GitHub Pages.
+# Stages all changes, commits (auto-generated message if none given),
+# pushes to the current branch, and watches the GitHub Actions workflow
+# build + deploy the MkDocs site to GitHub Pages.
 set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
@@ -16,9 +17,13 @@ fi
 
 message="${*:-}"
 if [ -z "$message" ]; then
-    read -r -p "Commit message: " message
-    if [ -z "$message" ]; then
-        message="Update docs $(date '+%Y-%m-%d %H:%M')"
+    files="$(git diff --cached --name-only)"
+    count="$(echo "$files" | grep -c .)"
+    if [ "$count" -le 3 ]; then
+        names="$(echo "$files" | xargs -n1 basename | paste -sd, -)"
+        message="Update $names"
+    else
+        message="Update docs ($count files) - $(date '+%Y-%m-%d %H:%M')"
     fi
 fi
 
