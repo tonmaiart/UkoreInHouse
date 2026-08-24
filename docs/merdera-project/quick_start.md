@@ -1,6 +1,6 @@
-Merdera Project เป็นโปรเจคทำ Animation Film 5 นาที เป้าหมายลง Youtube
+# Merdera Project
 
-โดยเราจะประสานงานหลักๆ ผ่าน Discord เป็นหลัก สามารถติดต่อพนักงานที่เกี่ยวข้องได้เลย
+Merdera Project เป็นโปรเจคทำ Animation Film 5 นาที เป้าหมายลง Youtube โดยเราจะประสานงานหลักๆ ผ่าน Discord เป็นหลัก สามารถติดต่อพนักงานที่เกี่ยวข้องได้เลย
 
 
-โดย 
+โดยสามารถศึกษา Pipeline การทำงานของโปรเจคนี้ได้ที่ [Merdera Project Pipeline](pipeline.md)
