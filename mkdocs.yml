@@ -10,21 +10,29 @@ theme:
 
 nav:
   - Introduction: intro.md
-  - Pipeline Tools:
-      - Ukore Hub:
-          - Quick Start: ukore-hub/quick-start.md
-          - Project Editor : ukore-hub/project-editor.md
-          - Explorer : ukore-hub/explorer.md
-          - Submit : ukore-hub/submit.md
-          - Program Launcher : ukore-hub/program-launcher.md
-      - Ukore Shot:
-          - Quick Start: ukore-shot/quick-start.md
-          - Comment Editor: ukore-shot/comment-editor.md
 
   - Projects:
-      - Merdera Project:
-        - Quick Start: merdera-project/quick_start.md
-        - Pipeline: merdera-project/pipeline.md
+    - Merdera Project:
+      - Introduction : merdera-project/quick_start.md
+      - Production Pipeline:
+            - Pipeline Overview: merdera-project/pipeline.md
+            - Why Unity : merdera-project/unity-overview.md
+      - Lookdev:
+            - Lookdev Overview: merdera-project/lookdev.md
+
+  - Pipeline Tools:
+      - Ukore Hub:
+          - Ukore Hub: ukore-hub/quick-start.md
+          - Plugins - Ukore Shot: ukore-shot/quick-start.md
+          
+      - Unity Plugins:
+          - Unity Ukore Importer: unity_ukore_importer/quick-start.md
+          - Unity Ukore Toon Shader: unity_ukore_toonshader/quick-start.md
+
+      - Maya Plugins:
+          - Maya Publisher: maya-publisher/quick-start.md
+
+
 
 markdown_extensions:
   - admonition
