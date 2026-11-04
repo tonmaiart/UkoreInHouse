@@ -123,6 +123,10 @@ Convention ของ Prefab อยู่ โดยเอาชื่อ Model �
 Avatar Definition = Create From This Model (Skip ถ้าตั้งไว้แบบนี้อยู่แล้ว ไม่
 Reimport ซ้ำโดยไม่จำเป็น) แล้วสร้าง/Reuse Prefab ไว้ในโฟลเดอร์เดียวกับ Model เอง
 (`{Import Path}/{ActorName}/{PrefabName}.prefab` ไม่ใช่ Shared Prefabs Folder)
+และตั้งค่าที่ช็อตต้องใช้ให้เลย: Animator เป็น Always Animate (ไม่งั้นตัวละครจะหายจาก
+วิดีโอตอนอยู่นอกกล้อง) และ Mesh ที่ยังอยู่ Default Layer ย้ายไป Light Layer 1 (ไม่งั้น
+ไฟ Toon ไม่โดน ตัวจะดำ) ถ้าเลือก Add Only ค่า Layer ที่ตั้งเองไว้จะอยู่เหมือนเดิม ส่วน
+Add and Overwrite สร้าง Prefab ใหม่ ค่าที่ตั้งเองจะหาย ต้องตั้งใหม่
 ตาม Build Behaviour แบบเดียวกับ Build Prefabs สุดท้ายเพิ่ม/เช็ค Animator
 Component บน Prefab แล้วผูก Avatar ที่ Generate จาก Model เข้าไปให้อัตโนมัติ —
 รันซ้ำกับ Actor ที่ Setup แล้วก็แค่ยืนยัน Wiring เดิม ไม่พังอะไร
