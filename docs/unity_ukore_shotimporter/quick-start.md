@@ -28,12 +28,14 @@
 **Actor** คือทุกอย่างที่มี Animation ไม่ว่าจะเป็นตัวละครหรือ Prop ถือเป็นประเภทเดียวกันหมด
 
 ระบบจะรู้ว่า Animation เป็นของใครจาก**ชื่อไฟล์** (เช่น `KBA030_Kafka_anim_001.fbx`
-→ หา `Kafka.fbx`) และหา**เฉพาะใน `Assets/SetupActor` เท่านั้น** (จะจัด Folder ย่อยยังไงก็ได้)
+→ หา `Kafka.fbx`) และหา**เฉพาะใน `Assets/SetupActor` เท่านั้น** (1 Folder ต่อ 1 Actor)
 
 ```
 Assets/SetupActor/          ← Actor ทุกตัวอยู่ใต้นี้
-├── Character/Kafka/...Kafka.fbx
-└── Prop/Jacob/...Jacob.fbx
+├── Kafka/Fbx/Kafka.fbx
+├── Jacob/Jacob.fbx
+├── VentDoor/VentDoor.fbx
+└── Camera/RenderCam.prefab ← กล้องที่ใช้ Render (ไม่ใช่ Actor)
 ```
 
 ถ้าตัวไหนขึ้นใน **Other Anims** แปลว่าไม่มี Model ชื่อนั้นใน `Assets/SetupActor`

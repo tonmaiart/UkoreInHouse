@@ -172,7 +172,7 @@ Clip เดิมในตำแหน่งเดิมอย่างเดี
 **Include Camera:** ปิดโดย Default — เมื่อเปิด จะดึง Shot ที่มี AssetName เป็น
 `camera` มาเพิ่ม/อัปเดต Clip บน GameObject ชื่อ "RenderCam" ตัวเดียวที่ใช้ร่วมกัน
 ทั้งฉาก (Reuse ถ้ามีอยู่แล้วในฉาก ไม่งั้น Instantiate จาก
-`Assets/SetupActor/Character/Camera/RenderCam.prefab` ซึ่งเป็น Fixed Path เช่นกัน) โดยปิด "Remove Start Offset" เพื่อ
+`Assets/SetupActor/Camera/RenderCam.prefab` ซึ่งเป็น Fixed Path เช่นกัน) โดยปิด "Remove Start Offset" เพื่อ
 ให้กล้องเล่นตาม Transform โลกจริงตามที่ Export มา ไม่ใช่ Offset ตามตำแหน่ง
 ปัจจุบันของ RenderCam — Clip กล้องใช้ Filter By Name/Add Mode ชุดเดียวกับ Clip
 ตัวละคร ไม่มีของตัวเอง และถูกนับรวมในผลลัพธ์ Added/Updated/Skipped เดียวกัน
