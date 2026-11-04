@@ -133,60 +133,9 @@ Component บน Prefab แล้วผูก Avatar ที่ Generate จา�
 ## หมวด Shot
 
 ### Shot Importer
-**Require:** External Source Folder ที่มีโครงสร้าง
-`{ShotName}/v001/{ShotName}_{AssetName}_..._....fbx`, `v002/...`, ...
-
-**ระบบตรวจจับเวอร์ชัน:** เหมือน Import Actor Setup (Regex `^v(\d+)$` เลือกเลข
-เวอร์ชันสูงสุด)
-
-**ระบบตรวจจับชื่อไฟล์:** แยกชื่อไฟล์ด้วย `_` เอา Token แรกเป็น `{ShotName}` และ
-Token ที่สองเป็น `{AssetName}` (ที่เหลือเป็น Free-form ไม่สนใจ) เช่น
-`KBA030_Kafka_anim_004` → ShotName `KBA030`, AssetName `Kafka` — `AssetName`
-มีค่าที่สงวนไว้พิเศษ 2 แบบ: `camera` (เช่น `KBA030_camera`) หมายถึงไฟล์กล้อง
-สำหรับ Add Shot to Timeline ตอนเปิด Include Camera, และ `metadata` (เช่น
-`KBA030_metadata.json`) หมายถึงไฟล์ Metadata ประกอบ Shot
-
-**ปลายทาง:** แยกตาม Sequence คือ `{Shots}/{SequencePrefix}/{ShotName}/...` โดย
-`{SequencePrefix}` คือตัวอักษรนำหน้าตัวเลขของ ShotName (Regex `^[A-Za-z]+` เช่น
-`KBA030` → `KBA`)
-
-**ตั้งค่า Import อัตโนมัติ** ให้ทุก FBX ที่ Copy เข้ามา: Animation Compression =
-Off, Rig Animation Type = Generic, Avatar Definition = Copy From Other Avatar
-— หา Avatar ต้นทางจาก `{AssetName}` โดยค้นหา Avatar Asset หรือ
-Avatar Sub-asset ที่ชื่อ `{AssetName}` หรือ `{AssetName}Avatar` (ไม่สนตัวพิมพ์
-เล็กใหญ่) **เฉพาะใน Actor Folder ที่ Fix ไว้** (ดูหัวข้อด้านล่าง) ถ้าหาไม่เจอก็
-Import ต่อไปได้ปกติแต่ไม่ผูก Avatar ให้ (ขึ้น Warning เตือน) และเปลี่ยนชื่อ
-AnimationClip ที่ Import เข้ามาจากค่า Default ของ FBX (`Take 001`) เป็น
-`{ShotName}_{AssetName}`
-
-**Actor Folder (Fixed Path):** Shot Importer และ Add Shot to Timeline จะหา Model,
-Avatar และ Prefab ของตัวละคร/Prop **เฉพาะใน 2 Folder นี้เท่านั้น** (Hardcode ไว้ใน
-`ShotNamingUtility.CharacterFolder` / `PropFolder` ไม่มีช่องให้ตั้งค่าในหน้าต่าง)
-
-| Folder | ใช้สำหรับ | ตัวอย่าง |
-| --- | --- | --- |
-| `Assets/SetupActor/Character` | ตัวละคร (ขึ้นในคอลัมน์ **Characters**) | `Assets/SetupActor/Character/Kafka/Fbx/Kafka.fbx` |
-| `Assets/SetupActor/Prop` | Prop ที่มี Animation (ขึ้นในคอลัมน์ **Props**) | `Assets/SetupActor/Prop/Jacob/Jacob.fbx` |
-
-- ค้นลึกลงไปใน Subfolder ได้ทุกชั้น จะวาง FBX ไว้ใน `{Actor}/` ตรงๆ หรือใน
-  `{Actor}/Fbx/` ก็ได้
-- ไฟล์ที่อยู่นอก 2 Folder นี้จะ**ไม่ถูกนับเลย** ถึงจะชื่อตรงกันก็ตาม (เช่น สำเนา
-  `Kafka.fbx` เก่าใน `Assets/Test/`) — ป้องกันไม่ให้ Avatar ผิดตัวมาปน
-- Asset ไหนไม่มี Model ใน 2 Folder นี้ จะขึ้นเป็น **Other Anims** (สีเหลือง) และ
-  ไม่มี Avatar ให้ → Add Shot to Timeline จะข้าม Shot นั้น ให้ Set up Actor ไว้ใน
-  Folder ที่ถูกต้องก่อน (เช่นใช้ Import Actor Setup โดยตั้ง Import Path เป็น
-  `Assets/SetupActor/Character` หรือ `Assets/SetupActor/Prop`)
-- ถ้าต้องการย้าย Actor Folder ในอนาคต ต้องแก้ค่าคงที่ใน `ShotNamingUtility.cs`
-
-**Scale Factor (เสริม):** ถ้าในชุด Shot เดียวกันมีไฟล์ `{ShotName}_metadata.json`
-ระบบจะอ่านค่า `scale_min` ของแต่ละ AssetName ด้วยการ Scan ด้วย Regex (ไม่ได้ใช้
-JSON Library เต็มรูปแบบ เพราะรูปแบบไฟล์ตายตัวและง่ายพอ) แล้วนำไปตั้งเป็น Global
-Scale ของ ModelImporter ให้อัตโนมัติ — ถ้าไม่มีไฟล์ Metadata ก็ Import ตามปกติ
-โดยไม่ Override Scale (Export รุ่นเก่าที่ไม่มี Metadata ก็ยัง Import ได้ปกติ)
-
-**Import Mode:** Clean and Import (ลบไฟล์เดิมที่ปลายทางของ Shot นั้นก่อน ผ่าน
-Recycle Bin), Import Append (ข้ามไฟล์ที่มีอยู่แล้ว), Import Append and Replace
-(Copy ทับทุกไฟล์)
+ย้ายไปเป็นหน้าต่างแยกแล้ว ดูวิธีใช้ได้ที่ [Unity Ukore Shot Importer](../unity_ukore_shotimporter/quick-start.md)
+(รวมถึงเรื่อง Folder ของตัวละคร/Prop ที่ต้องวางให้ถูกที่ ซึ่ง Add Shot to Timeline
+ด้านล่างใช้ด้วย)
 
 ### Add Shot to Timeline (รวม Include Camera)
 **Require:** มี Shot ถูก Import เข้ามาใน Shared Shots Folder แล้ว (จาก Shot
@@ -203,7 +152,7 @@ Avatar จาก `{AssetName}` ด้วยวิธีเดียวกับ 
 ใช้ Avatar เดียวกันจะถูกข้าม (นี่คือกลไกที่ทำให้รันทีละ Sequence ได้เอง เพราะ
 Scene ของแต่ละ Sequence จะมีแค่ตัวละครของ Sequence นั้นอยู่) ถ้าเปิด **Auto Add
 Missing Prefabs** ไว้ Shot ที่ยังไม่มี Animator ในฉากจะไม่ถูกข้าม แต่ระบบจะค้นหา
-Prefab ตัวละครที่มี Animator ผูก Avatar ชื่อเดียวกันใน Actor Folder (รองรับทั้ง
+Prefab ตัวละครที่มี Animator ผูก Avatar ชื่อเดียวกันใน [Actor Folder](../unity_ukore_shotimporter/quick-start.md#actor-folder) (รองรับทั้ง
 Regular และ Variant Prefab) แล้ว Instantiate เข้าฉากให้เองตอน Execute
 
 **Timeline/Track:** ใช้ PlayableDirector + TimelineAsset ตัวเดียวร่วมกันต่อ
@@ -234,9 +183,9 @@ Clip เดิมในตำแหน่งเดิมอย่างเดี
 
 **Execute Checked** รันทุก Step ที่ติ๊ก Checkbox ไว้ ตามลำดับตายตัว (Import
 Model → Import Texture → Build Prefabs → Build Materials → Assign Materials →
-Import Actor Setup → Shot Importer → Add Shot to Timeline) โดยจะโหลดข้อมูลของ
+Import Actor Setup → Add Shot to Timeline → Layout Export Scene) โดยจะโหลดข้อมูลของ
 แต่ละ Step ใหม่ก่อนรันเสมอ (ไม่ใช้ Preview เก่าที่อาจ Stale) และ Refresh
 AssetDatabase ระหว่าง Step ให้อัตโนมัติ ทำให้รันต่อกันเป็น Pipeline เดียวได้จริง
 เช่น Import Model → Build Prefabs → Build Materials → Assign Materials หรือ
-Shot Importer → Add Shot to Timeline โดย Step หลังจะเห็นผลลัพธ์ที่ Step ก่อนหน้า
+Import Actor Setup → Add Shot to Timeline โดย Step หลังจะเห็นผลลัพธ์ที่ Step ก่อนหน้า
 เพิ่งสร้างเสมอ
