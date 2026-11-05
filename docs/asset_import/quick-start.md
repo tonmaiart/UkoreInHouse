@@ -45,6 +45,29 @@
 ไฟล์ที่ใช้ `{AssetId}` เดียวกันจะได้ Material ตัวเดียวกัน เหมาะกับชิ้นส่วนที่ใช้ร่วมกัน
 แต่ถ้าตั้งชื่อซ้ำโดยไม่ตั้งใจ ก็จะถูกรวมเป็น Material เดียวด้วย
 
+### กฎการตั้งชื่อ
+
+- **เขียนติดกันแบบ PascalCase** ห้ามมี `_` ในแต่ละส่วน เช่น `ElevatorDoorLeft` ไม่ใช่ `ElevatorDoor_left`
+- **ตั้ง `{AssetId}` ตามชุด Texture ไม่ใช่ตามชิ้น** ชิ้นที่ใช้ Texture ชุดเดียวกันให้ใช้ `{AssetId}` เดียวกัน แล้วแยกชิ้นด้วย `{PartName}` เช่น `SM_BigFloorSeams_FloorSeamsA`
+- **`{SlotName}` ของ Texture ให้เหมือน `{AssetId}`** เช่น `T_Wall_Wall_BaseColor` ถ้าเป็น Texture คนละชุด ให้แยก `{AssetId}` แทน
+- **Model กับ Texture ต้องมี `{AssetId}` ตรงกัน** ไม่อย่างนั้น Prefab จะไม่ได้ Material
+- **Model หนึ่งชิ้นได้ Material เดียว** แม้ใน Model จะมีหลาย Slot ระบบจะใส่ตัวเดียวกันทุก Slot ถ้าต้องการหลาย Material ให้แยก Mesh เป็นคนละ Model
+- **เช็กชื่อก่อน Export** ตัวอักษรพิเศษอาจกลายเป็นรหัส เช่น `SM_CubeFBXASC046040`
+
+### ชื่อ Map ที่รองรับ
+
+ส่วนท้ายของชื่อ Texture ต้องเป็นหนึ่งในชื่อนี้ ไม่สนตัวพิมพ์เล็กใหญ่ และไม่จำเป็นต้องมีครบ
+
+| `{MapName}` | ใช้เป็น | ตัวอย่าง |
+| --- | --- | --- |
+| `BaseColor` | สีพื้น | `T_Wall_Wall_BaseColor` |
+| `Normal` | Normal Map | `T_Wall_Wall_Normal` |
+| `MOS` | Metallic, Occlusion, Smoothness รวมในไฟล์เดียว | `T_Wall_Wall_MOS` |
+| `Occlusion` | Occlusion แยกไฟล์ | `T_Wall_Wall_Occlusion` |
+| `Emissive` | ส่วนที่เรืองแสง | `T_Wall_Wall_Emissive` |
+
+ชื่ออื่น เช่น `Albedo` หรือ `Diffuse` จะไม่ถูกเสียบเข้า Material
+
 ## วิธีใช้
 
 1. วางไฟล์ให้ถูกโฟลเดอร์ และตั้งชื่อไฟล์ให้ตรง Pattern
