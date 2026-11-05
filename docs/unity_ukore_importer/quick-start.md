@@ -37,8 +37,8 @@ Folder เลย
 ## หมวด Assets
 
 ### Import Model / Import Texture
-**Require:** External Source Folder ที่เข้าถึงได้ (path นอกโปรเจกต์ก็ได้ ไม่ต้อง
-อยู่ใต้ Assets/) เท่านั้น ไม่ต้องมี Step อื่นรันมาก่อน
+**Require:** เลือก Map หรือ Prop และชื่อที่ช่อง **Asset** ระบบจะหาโฟลเดอร์ให้เอง (ดู
+[Asset Import](../asset_import/quick-start.md)) ไม่ต้องมี Step อื่นรันมาก่อน
 
 **ระบบตรวจจับ:** สแกนไฟล์ทุกไฟล์ใน External Source Folder แบบ Recursive แล้ว
 กรองด้วย Extension Filter (คั่นด้วย `,` หรือ `;` มี `.` นำหน้าหรือไม่ก็ได้ เว้นว่าง

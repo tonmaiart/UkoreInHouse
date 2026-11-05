@@ -3,20 +3,30 @@
 ใช้นำ Model และ Texture ของฉากกับพร็อปเข้า Unity แล้วต่อเป็น Prefab ที่มี Material พร้อมใช้
 ไม่ต้องทำมือทีละชิ้น เปิดได้ที่ `UkoreHub > Asset Importer...`
 
-ไฟล์ต้นทางอยู่ที่ `PublishToUnity/model/` และ `PublishToUnity/map/`
+ไม่ต้องตั้ง Path เอง แค่เลือกว่าเป็น **Map** หรือ **Prop** และชื่อ ระบบจะหาโฟลเดอร์ให้ทั้งหมด
 
 ![ขั้นตอนของ Asset Import จากไฟล์ต้นทางจนได้ Prefab พร้อมใช้](../assets/images/asset_import_flow.png)
 
 ![Asset Importer](../assets/images/asset_import_ui.png)
 
 1. **Execute Steps** — เลือก Step ที่จะดู และติ๊ก Step ที่จะรันรวมกัน หน้านี้ใช้แค่หมวด **Assets**
-2. **Shared Settings** — โฟลเดอร์ปลายทางของ Step นี้ใน Unity
-3. **Steps Info** — ค่าของ Step นี้ เช่น External Source Folder, Extension Filter, Import Mode
+2. **Asset** — เลือก Map หรือ Prop และชื่อ ส่วนโฟลเดอร์ปลายทางจะขึ้นให้เองและแก้ไม่ได้
+3. **Steps Info** — ค่าของ Step นี้ เช่น Extension Filter, Import Mode ส่วน External Source Folder จะขึ้นให้เอง
 4. **Configuration** — บันทึกหรือเรียกชุดค่าที่ตั้งไว้
 5. **Execute** — **Execute Current** รัน Step ที่เลือกอยู่ ส่วน **Execute Checked** รันทุก Step ที่ติ๊กตามลำดับ
 6. **Preview Result** — ดูก่อนรันว่าเจอไฟล์อะไร และชื่อไหนผ่านหรือไม่ผ่าน
 
-## กฎที่ต้องรู้: ตั้งชื่อให้ตรง Pattern
+## กฎที่ต้องรู้ 1: วางไฟล์ให้ถูกโฟลเดอร์
+
+| ประเภท | วางไฟล์ไว้ที่ | เข้า Unity ที่ |
+| --- | --- | --- |
+| Map | `PublishToUnity/map/{ชื่อ}/Models` และ `Textures` | `Assets/Map/{ชื่อ}/` |
+| Prop | `PublishToUnity/model/{ชื่อ}/Models` และ `Textures` | `Assets/Prop/{ชื่อ}/` |
+
+ใน `Assets/Map/{ชื่อ}/` หรือ `Assets/Prop/{ชื่อ}/` จะมี `Models`, `Textures`, `Prefabs`, `Materials`
+ถ้าไม่มีโฟลเดอร์ `{ชื่อ}` ตัวเลือกนั้นจะไม่ขึ้นในรายการ
+
+## กฎที่ต้องรู้ 2: ตั้งชื่อให้ตรง Pattern
 
 ระบบจับคู่ไฟล์จากชื่อเท่านั้น โดยใช้ `{AssetId}` เป็นตัวเชื่อม
 
@@ -37,9 +47,9 @@
 
 ## วิธีใช้
 
-1. ตั้งชื่อไฟล์ให้ตรง Pattern
-2. เลือก **Import Model** ใส่ External Source Folder แล้วตั้ง Extension Filter เช่น `.fbx`
-3. เลือก **Import Texture** แล้วตั้งค่าแบบเดียวกัน เช่น `.png`
+1. วางไฟล์ให้ถูกโฟลเดอร์ และตั้งชื่อไฟล์ให้ตรง Pattern
+2. ที่ **Asset** เลือก Map หรือ Prop และชื่อ
+3. เลือก **Import Model** แล้วตั้ง Extension Filter เป็น `.fbx` จากนั้นทำแบบเดียวกันที่ **Import Texture** เช่น `.png`
 4. เลือก **Build Prefabs** แล้วเช็ก Preview Result
 5. เลือก **Build Materials** เลือก **Mapping Template** แล้วเช็ก Preview Result
 6. เลือก **Assign Materials** แล้วเช็ก Preview Result
@@ -76,7 +86,10 @@
 
 | อาการ | ลองดู |
 | --- | --- |
+| ไม่เจอชื่อที่ต้องการใน Asset | ยังไม่มีโฟลเดอร์ `PublishToUnity/map/{ชื่อ}` หรือ `model/{ชื่อ}` สร้างแล้วกด **Refresh** |
+| ขึ้น skipped -- pick a Map or Prop first | ยังไม่ได้เลือก Asset Config เก่าต้องเลือกใหม่แล้วกด **Save Config** หนึ่งครั้ง |
 | ไฟล์หายจากผลลัพธ์ | ชื่อไม่ตรง Pattern ดูรายการ Invalid ใน Preview Result |
+| มีไฟล์แปลกติดมาด้วย เช่น `.py` | Extension Filter ว่างอยู่ ระบบจะ Copy ทุกไฟล์ ให้ใส่นามสกุลที่ต้องการ |
 | Prefab ไม่ได้ Material | ยังไม่ได้รัน Build Materials หรือ `{AssetId}` ไม่ตรงกัน |
 | Material ขาด Map บางตัว | `{MapName}` ไม่ตรงกับ Slot ใน Mapping Template |
 | Material ที่ใส่เองหาย | รัน Assign Materials ซ้ำ ระบบทับของเดิม |
