@@ -26,6 +26,7 @@ nav:
           - Plugins - Ukore Shot: ukore-shot/quick-start.md
           
       - Unity Plugins:
+          - Asset Import: asset_import/quick-start.md
           - Unity Ukore Importer: unity_ukore_importer/quick-start.md
           - Unity Ukore Shot Importer: unity_ukore_shotimporter/quick-start.md
           - Unity Ukore Toon Shader: unity_ukore_toonshader/quick-start.md
