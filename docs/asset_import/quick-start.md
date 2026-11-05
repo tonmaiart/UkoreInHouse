@@ -5,11 +5,7 @@
 
 ไฟล์ต้นทางอยู่ที่ `PublishToUnity/model/` และ `PublishToUnity/map/`
 
-```text
-Import Model   → โฟลเดอร์ Model    → Build Prefabs   → โฟลเดอร์ Prefabs ──┐
-                                                                         ├→ Assign Materials
-Import Texture → โฟลเดอร์ Textures → Build Materials → โฟลเดอร์ Materials ┘
-```
+![ขั้นตอนของ Asset Import จากไฟล์ต้นทางจนได้ Prefab พร้อมใช้](../assets/images/asset_import_flow.png)
 
 ![Asset Importer](../assets/images/asset_import_ui.png)
 
