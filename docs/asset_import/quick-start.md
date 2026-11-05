@@ -37,7 +37,7 @@
 | Material | `M_{AssetId}_{SlotName}` | `M_Wall_Wall` |
 | Texture | `T_{AssetId}_{SlotName}_{MapName}` | `T_Wall_Wall_BaseColor` |
 
-`{PartName}` และ `{SlotName}` จะมีหรือไม่มีก็ได้ แก้ Pattern ได้ที่ `UkoreHub > Template Editor... > Naming Convention`
+`{PartName}` ของ Model และ Prefab กับ `{SlotName}` ของ Material จะมีหรือไม่มีก็ได้ แต่ Texture ต้องมีครบทุกส่วน เช่น `T_Wall_BaseColor` จะถูกข้าม แก้ Pattern ได้ที่ `UkoreHub > Template Editor... > Naming Convention`
 
 !!! note "ชื่อไม่ตรงจะไม่ขึ้น Error"
     ไฟล์นั้นจะถูกข้ามไปเฉยๆ ก่อนรันให้ดูรายการ Invalid ใน **Preview Result** ทุกครั้ง
