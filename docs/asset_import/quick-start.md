@@ -62,11 +62,10 @@
 | --- | --- | --- |
 | `BaseColor` | สีพื้น | `T_Wall_BaseColor` |
 | `Normal` | Normal Map | `T_Wall_Normal` |
-| `MOS` | Metallic และ Smoothness รวมในไฟล์เดียว | `T_Wall_MOS` |
-| `Occlusion` | เงาตามซอก (AO) | `T_Wall_Occlusion` |
+| `MOS` | Metallic, เงาตามซอก (AO) และ Smoothness รวมในไฟล์เดียว | `T_Wall_MOS` |
 | `Emissive` | ส่วนที่เรืองแสง | `T_Wall_Emissive` |
 
-ชื่ออื่น เช่น `Albedo` หรือ `Diffuse` จะไม่ถูกเสียบเข้า Material
+ชื่ออื่น เช่น `Albedo`, `Diffuse` หรือ `Occlusion` จะไม่ถูกเสียบเข้า Material
 
 ### แต่ละ Channel หมายถึงอะไร
 
@@ -74,17 +73,16 @@
 | --- | --- | --- | --- | --- |
 | `BaseColor` | สีแดง | สีเขียว | สีน้ำเงิน | ความทึบ (Opacity) 255 = ทึบ |
 | `Normal` | ทิศซ้าย-ขวา | ทิศบน-ล่าง | ทิศพุ่งออกจากผิว | ไม่ใช้ |
-| `MOS` | Metallic | Occlusion | ไม่ใช้ (ใส่ 0) | Smoothness |
-| `Occlusion` | ไม่ใช้ | Occlusion 255 = ไม่มีเงา | ไม่ใช้ | ไม่ใช้ |
+| `MOS` | Metallic | Occlusion 255 = ไม่มีเงา | ไม่ใช้ (ใส่ 0) | Smoothness |
 | `Emissive` | สีแดง | สีเขียว | สีน้ำเงิน | ไม่ใช้ |
 
 !!! note "Smoothness ไม่ใช่ Roughness"
     Channel A ของ `MOS` ต้องกลับค่าจาก Roughness คือ Smoothness = 255 - Roughness
     ถ้าใส่ Roughness ตรงๆ ของที่ควรด้านจะกลายเป็นมันเงา และของที่ควรเงาจะกลายเป็นด้าน
 
-!!! note "AO ต้องใช้ไฟล์ `Occlusion` แยก"
-    เราเก็บ Occlusion ไว้ใน Channel G ของ `MOS` ด้วย แต่ Material ที่ใช้อยู่ (URP Lit) ไม่อ่านค่านี้
-    ถ้าอยากให้เห็น AO ต้อง Export `T_{AssetId}_Occlusion` มาด้วย
+!!! warning "ไม่มี AO ให้ใส่ Channel G เป็น 255"
+    AO อ่านจาก Channel G ของ `MOS` ไม่ต้อง Export ไฟล์ Occlusion แยก
+    ถ้าปล่อย Channel G เป็น 0 ทั้งไฟล์ พื้นผิวจะมืดผิดปกติ
 
 ### ตั้งค่าใน Unity หลัง Build Materials
 
@@ -93,7 +91,7 @@
 | ไฟล์ | ตั้งค่า |
 | --- | --- |
 | `Normal` | **Texture Type** เป็น Normal Map |
-| `MOS`, `Occlusion` | ปิด **sRGB (Color Texture)** เพราะเป็นค่าข้อมูล ไม่ใช่สี |
+| `MOS` | ปิด **sRGB (Color Texture)** เพราะเป็นค่าข้อมูล ไม่ใช่สี |
 | Material ที่มี `MOS` | **Smoothness** เป็น 1 เพราะค่านี้คูณกับ Channel A ถ้าปล่อย 0.5 ความมันจะเหลือครึ่งเดียว |
 
 ### ของที่โปร่งใส
@@ -151,6 +149,7 @@
 | มีไฟล์แปลกติดมาด้วย เช่น `.py` | Extension Filter ว่างอยู่ ระบบจะ Copy ทุกไฟล์ ให้ใส่นามสกุลที่ต้องการ |
 | Prefab ไม่ได้ Material | ยังไม่ได้รัน Build Materials หรือ `{AssetId}` ไม่ตรงกัน |
 | พื้นผิวมันผิดปกติ | Channel A ของ `MOS` อาจยังเป็น Roughness หรือยังไม่ได้ปิด sRGB |
+| พื้นผิวมืดผิดปกติ | Channel G ของ `MOS` อาจเป็น 0 ถ้าไม่มี AO ให้ใส่ 255 |
 | ฉากดูเรียบ ไม่มีมิติ | ไฟหลักส่องเฉพาะ Light Layer 1 ให้ตั้ง **Rendering Layer Mask** ของ Mesh ในฉากเป็น Light Layer 1 |
 | Material ขาด Map บางตัว | `{MapName}` ไม่ตรงกับ Slot ใน Mapping Template |
 | Material ที่ใส่เองหาย | รัน Assign Materials ซ้ำ ระบบทับของเดิม |
