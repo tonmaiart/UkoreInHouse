@@ -35,9 +35,9 @@
 | Model | `SM_{AssetId}_{PartName}` | `SM_Wall_WallA` |
 | Prefab | `PF_{AssetId}_{PartName}` | `PF_Wall_WallA` |
 | Material | `M_{AssetId}_{SlotName}` | `M_Wall_Wall` |
-| Texture | `T_{AssetId}_{SlotName}_{MapName}` | `T_Wall_Wall_BaseColor` |
+| Texture | `T_{AssetId}_{MapName}` | `T_Wall_BaseColor` |
 
-`{PartName}` ของ Model และ Prefab กับ `{SlotName}` ของ Material จะมีหรือไม่มีก็ได้ แต่ Texture ต้องมีครบทุกส่วน เช่น `T_Wall_BaseColor` จะถูกข้าม แก้ Pattern ได้ที่ `UkoreHub > Template Editor... > Naming Convention`
+`{PartName}` ของ Model และ Prefab กับ `{SlotName}` ของ Material จะมีหรือไม่มีก็ได้ แก้ Pattern ได้ที่ `UkoreHub > Template Editor... > Naming Convention`
 
 !!! note "ชื่อไม่ตรงจะไม่ขึ้น Error"
     ไฟล์นั้นจะถูกข้ามไปเฉยๆ ก่อนรันให้ดูรายการ Invalid ใน **Preview Result** ทุกครั้ง
@@ -49,7 +49,7 @@
 
 - **เขียนติดกันแบบ PascalCase** ห้ามมี `_` ในแต่ละส่วน เช่น `ElevatorDoorLeft` ไม่ใช่ `ElevatorDoor_left`
 - **ตั้ง `{AssetId}` ตามชุด Texture ไม่ใช่ตามชิ้น** ชิ้นที่ใช้ Texture ชุดเดียวกันให้ใช้ `{AssetId}` เดียวกัน แล้วแยกชิ้นด้วย `{PartName}` เช่น `SM_BigFloorSeams_FloorSeamsA`
-- **`{SlotName}` ของ Texture ให้เหมือน `{AssetId}`** เช่น `T_Wall_Wall_BaseColor` ถ้าเป็น Texture คนละชุด ให้แยก `{AssetId}` แทน
+- **Texture คนละชุดต้องใช้ `{AssetId}` ต่างกัน** เช่น `T_DoorLeft_BaseColor` กับ `T_DoorRight_BaseColor`
 - **Model กับ Texture ต้องมี `{AssetId}` ตรงกัน** ไม่อย่างนั้น Prefab จะไม่ได้ Material
 - **Model หนึ่งชิ้นได้ Material เดียว** แม้ใน Model จะมีหลาย Slot ระบบจะใส่ตัวเดียวกันทุก Slot ถ้าต้องการหลาย Material ให้แยก Mesh เป็นคนละ Model
 - **เช็กชื่อก่อน Export** ตัวอักษรพิเศษอาจกลายเป็นรหัส เช่น `SM_CubeFBXASC046040`
@@ -60,11 +60,11 @@
 
 | `{MapName}` | ใช้เป็น | ตัวอย่าง |
 | --- | --- | --- |
-| `BaseColor` | สีพื้น | `T_Wall_Wall_BaseColor` |
-| `Normal` | Normal Map | `T_Wall_Wall_Normal` |
-| `MOS` | Metallic, Occlusion, Smoothness รวมในไฟล์เดียว | `T_Wall_Wall_MOS` |
-| `Occlusion` | Occlusion แยกไฟล์ | `T_Wall_Wall_Occlusion` |
-| `Emissive` | ส่วนที่เรืองแสง | `T_Wall_Wall_Emissive` |
+| `BaseColor` | สีพื้น | `T_Wall_BaseColor` |
+| `Normal` | Normal Map | `T_Wall_Normal` |
+| `MOS` | Metallic, Occlusion, Smoothness รวมในไฟล์เดียว | `T_Wall_MOS` |
+| `Occlusion` | Occlusion แยกไฟล์ | `T_Wall_Occlusion` |
+| `Emissive` | ส่วนที่เรืองแสง | `T_Wall_Emissive` |
 
 ชื่ออื่น เช่น `Albedo` หรือ `Diffuse` จะไม่ถูกเสียบเข้า Material
 

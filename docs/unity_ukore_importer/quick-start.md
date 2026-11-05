@@ -73,7 +73,7 @@ Mapping Template (`MaterialTemplate` Asset ที่สร้าง/แก้จ
 ด้วย — Step นี้ไม่อ่าน Prefab หรือ Model เลย
 
 **ระบบตรวจจับ:** Parse ชื่อไฟล์ Texture ทุกไฟล์ด้วย Naming Convention ของ Texture
-(`{AssetType}_{AssetId}_{SlotName}_{MapName}`) ได้ `{AssetId}` กับ `{MapName}`
+(`{AssetType}_{AssetId}_{MapName}`) ได้ `{AssetId}` กับ `{MapName}`
 ออกมา แล้วเทียบ `{MapName}` กับรายชื่อ Slot ที่ตั้งไว้ใน Template (ไม่สนตัวพิมพ์
 เล็กใหญ่) ว่าตรงกันไหม จากนั้น Group Texture ทุกไฟล์ที่มี `{AssetId}` เดียวกันเข้า
 เป็น Material เดียว (ไม่ต้องมี Token Unique/Shared แยก เพราะ Group ด้วย
