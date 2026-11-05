@@ -68,6 +68,13 @@
 
 ชื่ออื่น เช่น `Albedo` หรือ `Diffuse` จะไม่ถูกเสียบเข้า Material
 
+### ของที่โปร่งใส
+
+ไม่มี Map แยกสำหรับ Opacity ให้ Export ความโปร่งใสไว้ใน Alpha ของ `BaseColor`
+ถ้ามีจุดที่โปร่งใสจริง **Build Materials** จะตั้ง Material เป็น Transparent ให้เอง และ Material นั้นจะไม่ทอดเงา
+
+ถ้าอยากได้ขอบคม เช่น ตะแกรงหรือใบไม้ ให้เปิด **Alpha Clipping** ใน Material เอง ระบบจะไม่เปลี่ยนกลับตอนรันซ้ำ
+
 ## วิธีใช้
 
 1. วางไฟล์ให้ถูกโฟลเดอร์ และตั้งชื่อไฟล์ให้ตรง Pattern
@@ -112,6 +119,7 @@
 | ไม่เจอชื่อที่ต้องการใน Asset | ยังไม่มีโฟลเดอร์ `PublishToUnity/map/{ชื่อ}` หรือ `model/{ชื่อ}` สร้างแล้วกด **Refresh** |
 | ขึ้น skipped -- pick a Map or Prop first | ยังไม่ได้เลือก Asset Config เก่าต้องเลือกใหม่แล้วกด **Save Config** หนึ่งครั้ง |
 | ไฟล์หายจากผลลัพธ์ | ชื่อไม่ตรง Pattern ดูรายการ Invalid ใน Preview Result |
+| ของที่ควรทึบกลายเป็นโปร่งใส | Alpha ของ `BaseColor` มีจุดที่ไม่ทึบ แก้ไฟล์ต้นทาง แล้วตั้ง Material กลับเป็น Opaque เอง |
 | มีไฟล์แปลกติดมาด้วย เช่น `.py` | Extension Filter ว่างอยู่ ระบบจะ Copy ทุกไฟล์ ให้ใส่นามสกุลที่ต้องการ |
 | Prefab ไม่ได้ Material | ยังไม่ได้รัน Build Materials หรือ `{AssetId}` ไม่ตรงกัน |
 | Material ขาด Map บางตัว | `{MapName}` ไม่ตรงกับ Slot ใน Mapping Template |
