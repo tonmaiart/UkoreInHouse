@@ -18,6 +18,7 @@
 5. **Details / Log** — คลิก Shot เพื่อดูว่ามีไฟล์อะไรบ้าง ส่วน Log บอกผลลัพธ์และคำเตือน
 6. **Start Import** — Import ทุก Shot ที่ติ๊กไว้
 7. **Start Recorder** — Render ทุก Shot ที่ติ๊กไว้เป็นวิดีโอ
+8. **Keep Visible** — ชื่อ Actor ที่ห้ามซ่อนตอน Render เช่นประตูในฉาก (ดู[ด้านล่าง](#auto))
 
 ---
 
@@ -62,6 +63,8 @@ Assets/SetupActor/          ← Actor ทุกตัวอยู่ใต้น
 
 ---
 
+<a id="auto"></a>
+
 ## ระบบทำอะไรให้อัตโนมัติ
 
 - **Timeline ใช้ Animation เวอร์ชันล่าสุดเสมอ** — Import เสร็จแล้ว Clip บน
@@ -70,6 +73,10 @@ Assets/SetupActor/          ← Actor ทุกตัวอยู่ใต้น
 - **Render:** ไม่ต้องเปิดฉากเอง ระบบหาฉากของ Shot นั้น แล้ว Render ผ่านกล้อง
   `RenderCam` ให้ ถ้าติ๊ก **Add Missing to Timeline** ไว้ Shot ที่ยังไม่อยู่บน
   Timeline จะถูกวางให้ก่อน
+- **ซ่อน Actor ที่ไม่ได้อยู่ใน Shot** — ตอน Render ถ้า Actor ตัวไหนไม่มี Clip ใน Shot
+  นั้น (เช่น Shot ที่ไม่มีตัวละครเลย) ระบบจะซ่อนตัวนั้นให้เอง ไม่ต้องลบออกจากฉาก
+  ส่วนชิ้นที่เป็นส่วนหนึ่งของฉาก เช่นประตู ให้ใส่ชื่อไว้ในช่อง **Keep Visible**
+  (คั่นด้วย `,` ค่าเริ่มต้นคือ `VentDoor`) แล้วจะไม่ถูกซ่อน
 
 !!! note
     Texture / Material (Lookdev) ของ Actor **ไม่ได้**อัปเดตผ่านหน้านี้ ให้แก้ที่
@@ -83,4 +90,6 @@ Assets/SetupActor/          ← Actor ทุกตัวอยู่ใต้น
 | --- | --- |
 | Actor ขึ้นใน **Other Anims** | ย้าย Model ไปไว้ใน `Assets/SetupActor` ให้ชื่อตรงกับใน Animation แล้วกด **Rescan** |
 | Timeline ยังเล่น Animation เก่า | กด **Update Timelines** |
+| ใน Render มีตัวละครค้างท่าจาก Shot อื่น | ตัวนั้นยังมี Clip ของ Shot นี้บน Timeline อยู่ ให้ลบ Clip นั้นออกจาก Track ของตัวนั้น (Import ใหม่ไม่ลบ Clip เก่าให้) |
+| ของในฉากหายไปตอน Render | ใส่ชื่อ Actor นั้นในช่อง **Keep Visible** |
 | Render ขึ้น **Failed** | เอาเมาส์ชี้ที่คอลัมน์ Render เพื่ออ่านสาเหตุ ส่วนใหญ่คือยังไม่ได้ Import หรือยังไม่ได้ติ๊ก **Add Missing to Timeline** |
