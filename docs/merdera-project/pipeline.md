@@ -68,6 +68,8 @@
 
 - รับ Layout มาจาก Unity เพื่อให้ Animation ใช้ประกอบฉากในการทำ Animation
 
+- Layout ของแต่ละฉากอยู่ที่ `KafkaProj/publish/Map/{ชื่อฉาก}/Layout/v00N/v00N.fbx` (เลขมากสุด = ล่าสุด) เช่น `KafkaBedroom/Layout/v004/v004.fbx` ใน Unity แต่ละฉากมี Scene `{ชื่อฉาก}Layout.unity` ไว้ส่ง Layout ด้วย Layout Export Scene
+
 - Layout คือ Environment ที่ถูกลดทอนให้ Animator พอเห็นภาพสัดส่วนของฉากคร่าวๆ โดยไม่มี Texture, Model ที่ซับซ้อน เพื่อให้ Animator อนิเมทได้ลื่นไหลที่สุด และ Artist ไม่จำเป็นต้องอัพเดท Texture, Models เพิ่มใน Layout ถ้าไม่จำเป็นจริงๆ
 
 
