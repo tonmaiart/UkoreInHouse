@@ -18,6 +18,9 @@
 
 - Effect Source : Vector ที่จะเป็นตัวอ้างอิง (ซึ่งส่วนใหญ่จะใช้ Joint head ของตัวละคร)
 
+!!! note "ตั้งแต่ 23 พ.ย. 2026"
+    ใน shot ของ ETA และ KBA เงาบนหน้าของ Kafka เป็นแบบ key มือใน Timeline (Effect Source = `HeadRelative`) ไม่ได้ตามแสงแล้ว ดู [Key เงา SDF บนหน้า (ต่อ Shot)](sdf-keys.md)
+
 # 2. Custom Gradient 
 
 ### 2.1) Gradient Mix Settings (อยู่ใน Ukore Toon Shader Material)
