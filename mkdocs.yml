@@ -30,7 +30,7 @@ nav:
           - Unity Ukore Importer: unity_ukore_importer/quick-start.md
           - Unity Ukore Shot Importer: unity_ukore_shotimporter/quick-start.md
           - Unity Ukore Toon Shader: unity_ukore_toonshader/quick-start.md
-          - Key เงา SDF ต่อ Shot: unity_ukore_toonshader/sdf-keys.md
+          - Key เงา SDF ต่อ Sequence: unity_ukore_toonshader/sdf-keys.md
 
       - Maya Plugins:
           - Maya Publisher: maya-publisher/quick-start.md

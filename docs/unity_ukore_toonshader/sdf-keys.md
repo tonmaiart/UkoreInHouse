@@ -1,27 +1,28 @@
-# Key เงา SDF บนหน้า (ต่อ Shot)
+# Key เงา SDF บนหน้า (ต่อ Sequence)
 
-เงาบนหน้าของ Kafka ไม่ได้ตามแสงในฉากแล้ว คนทำ lookdev ต้อง key เองใน Timeline ของแต่ละ shot
+เงาบนหน้าของ Kafka ไม่ได้ตามแสงในฉากแล้ว คนทำ lookdev ต้อง key เองใน Timeline โดยแต่ละ sequence (ETA, KBA) มี object เดียวให้ key ตลอดทั้ง sequence
 
-Key ของแต่ละ shot เก็บอยู่ในไฟล์ของ shot นั้นเอง ถ้านักแอนิเมตส่ง animation เวอร์ชันใหม่มาแล้ว import ใหม่ key ก็ยังอยู่ และเงาก็ยังเหมือนเดิม
+Key เก็บแยกไว้ในไฟล์ของ sequence เอง ถ้านักแอนิเมตส่ง animation เวอร์ชันใหม่มาแล้ว import ใหม่ key ก็ยังอยู่ และเงาก็ยังเหมือนเดิม
 
 เปิดใช้: ใน Unity เปิด scene ของ sequence (`Assets/Timeline/ETA/ETA_scene.unity` หรือ `Assets/Timeline/KBA/KBA.unity`) แล้วเลือก `ETA_Timeline` / `KBA_Timeline` ใน Hierarchy เพื่อเปิด Timeline
 
 ## มีอะไรบ้าง
 
-1. **Track `Kafka SDF`** ใน Timeline: มี clip ชื่อ `{Shot}_SDF` (เช่น `ETA040_SDF`) อยู่ตรงกับกล้องของ shot นั้นพอดี
-2. **Object `FacialLight`** ใน Hierarchy: เป็นตัวที่ track นี้ควบคุม ใน Inspector มีช่องที่ key ได้ 3 ช่องในส่วน `SDF Face Light Driver`
+1. **Object `FacialLight`** ใน Hierarchy: ตัวที่ใช้ key เงา ใน Inspector ส่วน `SDF Face Light Driver` มีช่องที่ key ได้ 3 ช่อง
    - **Angle** คือแสงมาจากทางไหนเทียบกับหน้า
      - `0` = ตรงหน้า (หน้าสว่างหมด)
      - `90` / `-90` = มาจากด้านข้าง (คนละข้างกัน)
      - `180` = มาจากด้านหลัง
    - **Offset** เลื่อนขอบเงาเข้าหรือออก
    - **Scale** ความกว้างของช่วงที่เงาเปลี่ยน
-3. **ไฟล์ key** อยู่ที่ `Assets/Lookdev/SDF/{SEQ}/{Shot}_Kafka_SDF.anim` หนึ่งไฟล์ต่อหนึ่ง shot
+2. **Track `Kafka SDF`** ใน Timeline: มี clip เดียวชื่อ `ETA_SDF` / `KBA_SDF` ยาวตั้งแต่ต้นจนจบ sequence
+3. **ไฟล์ key** อยู่ที่ `Assets/Lookdev/SDF/ETA/ETA_Kafka_SDF.anim` และ `Assets/Lookdev/SDF/KBA/KBA_Kafka_SDF.anim`
 
 ## กฎที่ห้ามพลาด
 
 - **เงาไม่หมุนตามหัวเองแล้ว** ถ้า Kafka หันหัวแล้วอยากให้เงาเปลี่ยน ต้อง key Angle เอง
-- **อย่าลบหรือย้ายไฟล์ใน `Assets/Lookdev/SDF`** ไฟล์พวกนี้คืองานที่ key ไว้ ระบบจะไม่สร้างทับให้
+- **Key อยู่ที่เฟรมของ Timeline** ถ้ามีคนย้ายหรือยืดหด shot บน Timeline เอง ต้องย้าย key ตามด้วย (การ import animation ใหม่ไม่ย้ายจุดเริ่มของ shot)
+- **อย่าลบหรือย้ายไฟล์ใน `Assets/Lookdev/SDF`** ไฟล์พวกนี้คืองานที่ key ไว้
 
 ## วิธี key
 
@@ -31,20 +32,18 @@ Key ของแต่ละ shot เก็บอยู่ในไฟล์ข�
 4. กด Record อีกครั้งเพื่อหยุด แล้วกด Save
 5. ถ้าอยากปรับละเอียด ให้ดับเบิลคลิก clip แล้วแก้ curve ใน Curve Editor
 
-ตอนตั้งระบบนี้ (23 พ.ย. 2026) ทุก shot มี key เริ่มต้นหนึ่งตัวที่เฟรมแรก ซึ่งทำให้เฟรมแรกออกมาเหมือนเงาที่ render ไว้เดิม
+ตอนตั้งระบบนี้ (23 พ.ย. 2026) ต้นทุก shot มี key ที่ค้างค่าไว้จนถึง shot ถัดไป ค่านั้นทำให้เฟรมแรกของแต่ละ shot ออกมาเหมือนเงาที่ render ไว้เดิม จะแก้หรือเพิ่ม key ตรงไหนก็ได้
 
 ## ระบบทำอะไรให้เอง
 
-- **Shot ยาวขึ้นหรือสั้นลง** หลัง import animation ใหม่: clip `{Shot}_SDF` จะขยับตามกล้องเอง ตอนกด Update Timelines, Start Import และ Start Recorder ใน Shot Importer โดย key ข้างในไม่เปลี่ยน
-  - key นับจากต้น shot เสมอ
-  - ถ้า shot ยาวขึ้น ค่าสุดท้ายจะค้างไว้จนจบ
-- **Shot ใหม่**: เปิด scene ของ sequence แล้วกดปุ่ม **SDF Clips** ใน Shot Importer ระบบจะเพิ่ม clip ให้ shot ที่ยังไม่มี และจะไม่แตะ shot ที่ key ไว้แล้ว
+- ตอนกด Update Timelines, Start Import และ Start Recorder ใน Shot Importer: clip `ETA_SDF` / `KBA_SDF` จะยืดให้ยาวถึงจบ shot สุดท้ายเสมอ โดย key ข้างในไม่เปลี่ยน
+- Shot ใหม่ใน sequence ไม่ต้องทำอะไรเพิ่ม clip ครอบคลุมให้เอง
 
 ## เจอปัญหา?
 
 | อาการ | ทำแบบนี้ |
 | --- | --- |
-| Shot ใหม่ไม่มี clip `{Shot}_SDF` | เปิด scene ของ sequence แล้วกด **SDF Clips** ใน Shot Importer |
-| clip SDF สั้นหรือยาวไม่เท่ากล้อง | กด **Update Timelines** ใน Shot Importer |
+| ไม่มี track `Kafka SDF` หรือ clip หาย | เปิด scene ของ sequence แล้วกด **SDF Clips** ใน Shot Importer |
+| clip SDF ไม่ยาวถึงจบ sequence | กด **Update Timelines** ใน Shot Importer |
 | เงาไม่เปลี่ยนตอนหันหัว | ต้อง key **Angle** เองในช่วงที่หันหัว |
-| หน้าสว่างหมดหรือมืดหมดทั้ง shot | ดูค่า **Angle** (ใกล้ 0 = สว่างหมด, ใกล้ 180 = มืดหมด) และ **Scale** |
+| หน้าสว่างหมดหรือมืดหมด | ดูค่า **Angle** (ใกล้ 0 = สว่างหมด, ใกล้ 180 = มืดหมด) และ **Scale** |
