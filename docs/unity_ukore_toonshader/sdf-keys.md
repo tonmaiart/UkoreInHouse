@@ -45,6 +45,7 @@ Key เก็บแยกไว้ในไฟล์ของ sequence เอง
 | --- | --- |
 | ไม่มี track `Kafka SDF` หรือ clip หาย | เปิด scene ของ sequence แล้วกด **SDF Clips** ใน Shot Importer |
 | clip SDF ไม่ยาวถึงจบ sequence | กด **Update Timelines** ใน Shot Importer |
+| กด Record แล้วขึ้น "This clip is not recordable" | กด **Update Timelines** หรือ **SDF Clips** ใน Shot Importer หนึ่งครั้ง แล้ว Record ใหม่ |
 | เงาไม่เปลี่ยนตอนหันหัว | ต้อง key **Left Shadow** / **Right Shadow** เองในช่วงที่หันหัว |
 | หน้ามืดหมด | สองช่องรวมกันถึง 1 แล้ว ลดฝั่งที่ไฟส่องมาลง |
 | หน้าดูเหมือนโดนไฟสองทาง | มีเงาเข้ามาทั้งสองฝั่ง หรือฝั่งที่มีเงาไม่ตรงกับไฟที่ผมและตัว ให้เหลือเงาแค่ฝั่งตรงข้ามกับไฟ |
